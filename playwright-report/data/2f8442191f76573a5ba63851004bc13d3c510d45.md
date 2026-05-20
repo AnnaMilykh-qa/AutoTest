@@ -1,0 +1,89 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - link "Open Source Social Network" [ref=e7] [cursor=pointer]:
+      - /url: https://demo.opensource-socialnetwork.org/
+    - link "Login" [ref=e8] [cursor=pointer]:
+      - /url: https://demo.opensource-socialnetwork.org/login
+  - generic [ref=e16]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - img [ref=e22]
+        - heading "Welcome to Open Source Social Network! Join now to make new friends, create groups, add photos, and much more." [level=1] [ref=e23]
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: 
+            - text: Create & Join Groups
+          - generic [ref=e27]:
+            - generic [ref=e28]: 
+            - text: Personal Profiles
+          - generic [ref=e29]:
+            - generic [ref=e30]: 
+            - text: Share Photos & Videos
+          - generic [ref=e31]:
+            - generic [ref=e32]: 
+            - text: Leave Comments
+          - generic [ref=e33]:
+            - generic [ref=e34]: 
+            - text: Like & React
+          - generic [ref=e35]:
+            - generic [ref=e36]: 
+            - text: Private Messaging
+          - generic [ref=e37]:
+            - generic [ref=e38]: 
+            - text: Notifications & Alerts
+          - generic [ref=e39]:
+            - generic [ref=e40]: 
+            - text: Easy Search & Discovery
+          - generic [ref=e41]:
+            - generic [ref=e42]: 
+            - text: Share & Collaborate
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - heading "Create an account" [level=2] [ref=e46]
+          - generic [ref=e47]: It's free and always will be.
+        - group [ref=e49]:
+          - generic [ref=e50]:
+            - textbox "First Name" [ref=e52]: Velva
+            - textbox "Last Name" [ref=e54]: Mills
+          - generic [ref=e55]:
+            - textbox "Email" [ref=e57]: Willard_Schulist52@gmail.com
+            - textbox "Re-enter Email" [ref=e59]: Willard_Schulist52@gmail.com
+          - textbox "Username" [ref=e61]: HattieKuhlman20
+          - textbox "Password" [ref=e63]: 7mILkdHA_KnHLiF
+          - textbox "Birthdate" [ref=e65]: 06/10/1993
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - radio [ref=e68] [cursor=pointer]
+              - generic [ref=e69] [cursor=pointer]: Male
+            - generic [ref=e70]:
+              - radio [ref=e71] [cursor=pointer]
+              - generic [ref=e72] [cursor=pointer]: Female
+            - generic [ref=e73]:
+              - radio [ref=e74] [cursor=pointer]
+              - generic [ref=e75] [cursor=pointer]: Other
+          - generic [ref=e76]:
+            - checkbox [ref=e77] [cursor=pointer]
+            - generic [ref=e78] [cursor=pointer]:
+              - text: I confirm to agree with your website
+              - link "Terms and Conditions" [ref=e79]:
+                - /url: https://demo.opensource-socialnetwork.org/site/terms
+              - text: and
+              - link "Privacy Policy" [ref=e80]:
+                - /url: https://demo.opensource-socialnetwork.org/site/privacy
+          - button "Create an account" [ref=e81] [cursor=pointer]
+    - contentinfo [ref=e82]:
+      - generic [ref=e84]:
+        - link "© COPYRIGHT Open Source Social Network|" [ref=e85] [cursor=pointer]:
+          - /url: https://demo.opensource-socialnetwork.org/
+        - link "About|" [ref=e86] [cursor=pointer]:
+          - /url: https://demo.opensource-socialnetwork.org/site/about
+        - link "Terms and Conditions|" [ref=e87] [cursor=pointer]:
+          - /url: https://demo.opensource-socialnetwork.org/site/terms
+        - link "Privacy" [ref=e88] [cursor=pointer]:
+          - /url: https://demo.opensource-socialnetwork.org/site/privacy
+        - link "Powered by the Open Source Social Network." [ref=e89] [cursor=pointer]:
+          - /url: https://www.opensource-socialnetwork.org/
+```
