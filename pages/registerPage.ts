@@ -1,7 +1,8 @@
 import { expect, Locator, Page } from '@playwright/test'
 import { DatePicker } from '../components/datePicker'
 import { BasePage } from '../pages/basePage'
-import {TMonth} from'../tests/login.spec'
+import { TMonth } from '../tests/login.spec'
+import { RadioButton } from '../components/radioButton'
 
 export class RegistrationPage extends BasePage {
   url = 'https://demo.opensource-socialnetwork.org/'
@@ -17,9 +18,9 @@ export class RegistrationPage extends BasePage {
   createAccountButton: Locator
   birthdate: Locator
   datePicker: DatePicker
-  genderM: Locator
-  genderF: Locator
-  genderO: Locator
+  genderM: RadioButton
+  genderF: RadioButton
+  genderO: RadioButton
 
   registeredCheck: Locator
 
@@ -41,9 +42,9 @@ export class RegistrationPage extends BasePage {
 
     this.datePicker = new DatePicker(page)
 
-    this.genderM = this.page.getByText('Male')
-    this.genderF = this.page.getByText('Female')
-    this.genderO = this.page.getByText('Other')
+    this.genderM = new RadioButton(this.page.locator('//input[@value="male"]'))
+    this.genderF = new RadioButton(this.page.locator('//input[@value="female"]'))
+    this.genderO = new RadioButton(this.page.locator('//input[@value="other"]'))
 
     this.registeredCheck = this.page.getByText('Your account has been registered!')
   }
@@ -74,15 +75,15 @@ export class RegistrationPage extends BasePage {
     console.log('the gender is', gender)
     switch (gender) {
       case 'Male':
-        await this.genderM.click()
+        await this.genderM.on()
         break
 
       case 'Female':
-        await this.genderF.click()
+        await this.genderF.on()
         break
 
       case 'Other':
-        await this.genderO.click()
+        await this.genderO.on()
         break
 
       default:
@@ -94,6 +95,6 @@ export class RegistrationPage extends BasePage {
     await this.createAccountButton.click()
 
     //this.registeredCheck = this.page.getByText('Your account has been registered!')
-   await  expect(await this.page.getByText('Your account has been registered!')).toBeVisible()
+    await expect(await this.page.getByText('Your account has been registered!')).toBeVisible()
   }
 }

@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "runLoginTest:debug": "npx playwright test login.spec.ts --debug"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +20,7 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.9.1",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-playwright": "^2.10.1",
@@ -31,6 +31,7 @@
     "typescript-eslint": "^8.57.1"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.4.0"
+    "@faker-js/faker": "^10.4.0",
+    "@playwright/test": "^1.58.2"
   }
 }
