@@ -3,18 +3,28 @@ import { DatePicker } from '../components/datePicker'
 import { BasePage } from '../pages/basePage'
 import { TMonth } from '../tests/login.spec'
 import { RadioButton } from '../components/radioButton'
+import { Input } from '../components/input'
+import { Checkbox } from '../components/checkbox'
 
 export class RegistrationPage extends BasePage {
   url = 'https://demo.opensource-socialnetwork.org/'
 
   //page: Page
-  firstName: Locator
-  lastName: Locator
-  email: Locator
-  confirmEmail: Locator
-  username: Locator
-  password: Locator
-  termsCheckbox: Locator
+  //firstName: Locator
+  //lastName: Locator
+  //email: Locator
+  //confirmEmail: Locator
+  //username: Locator
+  //password: Locator
+  //termsCheckbox: Locator
+  firstName: Input
+  lastName: Input
+  email: Input
+  confirmEmail: Input
+  username: Input
+  password: Input
+  termsCheckbox: Checkbox
+
   createAccountButton: Locator
   birthdate: Locator
   datePicker: DatePicker
@@ -25,19 +35,24 @@ export class RegistrationPage extends BasePage {
   registeredCheck: Locator
 
   constructor(page: Page) {
-    //this.page = page
     super(page)
 
-    this.firstName = this.page.getByPlaceholder('First Name')
-    this.lastName = this.page.getByPlaceholder('Last Name')
-    this.email = this.page.getByPlaceholder('Email', { exact: true })
-    this.confirmEmail = this.page.getByPlaceholder('Re-enter Email')
-    this.username = this.page.getByPlaceholder('Username')
-    this.password = this.page.getByPlaceholder('Password')
+    //this.firstName = this.page.getByPlaceholder('First Name')
+    //this.lastName = this.page.getByPlaceholder('Last Name')
+    //this.email = this.page.getByPlaceholder('Email', { exact: true })
+    //this.confirmEmail = this.page.getByPlaceholder('Re-enter Email')
+    //this.username = this.page.getByPlaceholder('Username')
+    //this.password = this.page.getByPlaceholder('Password')
+    //this.termsCheckbox = this.page.locator('input[type="checkbox"]')
+    this.firstName = new Input(this.page.getByPlaceholder('First Name'))
+    this.lastName = new Input(this.page.getByPlaceholder('Last Name'))
+    this.email = new Input(this.page.getByPlaceholder('Email', { exact: true }))
+    this.confirmEmail = new Input(this.page.getByPlaceholder('Re-enter Email'))
+    this.username = new Input(this.page.getByPlaceholder('Username'))
+    this.password = new Input(this.page.getByPlaceholder('Password'))
+    this.termsCheckbox = new Checkbox(this.page.locator('input[type="checkbox"]'))
+
     this.birthdate = this.page.getByPlaceholder('Birthdate')
-
-    this.termsCheckbox = this.page.locator('input[type="checkbox"]')
-
     this.createAccountButton = this.page.getByRole('button', { name: 'Create an account' })
 
     this.datePicker = new DatePicker(page)
@@ -90,7 +105,8 @@ export class RegistrationPage extends BasePage {
         break
     }
 
-    await this.termsCheckbox.click()
+    //await this.termsCheckbox.click()
+    await this.termsCheckbox.check()
 
     await this.createAccountButton.click()
 
