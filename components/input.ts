@@ -9,6 +9,8 @@ export class Input {
 
   async fill(value: string) {
     await this.locator.fill(value)
+    await this.verify(value)
+
   }
 
   async getValue() {
@@ -18,4 +20,5 @@ export class Input {
   async verify(expected: string) {
     await expect(this.locator).toHaveValue(expected)
   }
+
 }

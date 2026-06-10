@@ -18,15 +18,15 @@ export type TMonth = [
   'Dec.',
 ]
 
-test.skip('login test', async ({ page }) => {
+test.skip('User can log in with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page)
   await loginPage.login('administrator', 'administrator')
   await loginPage.checkLogin()
 })
 
-test('register test', async ({ page }) => {
+test('User can register a new account', async ({ page }) => {
   const registerPage = new RegistrationPage(page)
-  const userName = faker.internet.username()
+  const userName = faker.internet.username().replace('.', '')
   const genders: ['Male', 'Female', 'Other'] = ['Male', 'Female', 'Other']
   const month: TMonth = [
     'Jan.',
@@ -56,23 +56,3 @@ test('register test', async ({ page }) => {
   )
 })
 
-test.skip('userName test', async () => {
-  const genders = ['Male', 'Female', 'Other']
-  const user1 = {
-    name: 'Anna',
-    lastName: 'Milykh',
-  }
-
-  console.log(user1)
-  user1.lastName = 'Newone'
-  //user1 = 2
-  console.log(user1)
-
-  let value = 'qwe'
-  console.log(value)
-  value = 'ewq'
-  console.log(value)
-
-  const gender = faker.helpers.arrayElement(genders)
-  console.log(gender)
-})

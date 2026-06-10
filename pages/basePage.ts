@@ -10,8 +10,5 @@ export class BasePage {
   async open(url: string) {
     await this.page.goto(url)
     await expect(this.page).toHaveURL(url)
-  }
-
-  //expect(actual value).method(etalonValue) 
-
+  } 
 }
