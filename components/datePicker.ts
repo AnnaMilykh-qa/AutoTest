@@ -15,7 +15,8 @@ export class DatePicker {
     console.log('The month is ', month)
     await this.month.selectOption({ label: month })
     await this.year.selectOption({ label: year })
+    //убрать
     //await this.page.locator(`//a[text()="${day}"]`).click()
-    await this.page.getByText(day, {exact:true}).click()
+    await this.page.getByText(day, { exact: true }).click()
   }
 }

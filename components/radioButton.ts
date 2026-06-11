@@ -16,6 +16,6 @@ export class RadioButton {
   }
 
   async getValue() {
-   return await this.locator.isChecked()
+    return await this.locator.isChecked()
   }
 }

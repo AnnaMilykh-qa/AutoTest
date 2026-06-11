@@ -1,16 +1,15 @@
 import { expect, Locator, Page } from '@playwright/test'
 import { DatePicker } from '../components/datePicker'
+// не тот уровень импорта
 import { BasePage } from '../pages/basePage'
 import { TMonth } from '../tests/login.spec'
 import { RadioButton } from '../components/radioButton'
 import { Input } from '../components/input'
 import { Checkbox } from '../components/checkbox'
-import { ok } from 'node:assert'
 import { CreateButton } from '../components/createButton'
 
 export class RegistrationPage extends BasePage {
-  url = process.env.START_URL
-
+  url = '/'
   firstName: Input
   lastName: Input
   email: Input
@@ -60,7 +59,6 @@ export class RegistrationPage extends BasePage {
     day: string,
     gender: 'Male' | 'Female' | 'Other'
   ) {
-    ok(this.url, 'no such url')
     await this.open(this.url)
     await this.firstName.fill(firstName)
     await this.lastName.fill(lastName)
@@ -77,11 +75,13 @@ export class RegistrationPage extends BasePage {
 
     await this.createAccountButton.click()
 
+    // не удобно будет искать текст если упадет
     await expect(this.page.getByText('Your account has been registered!')).toBeVisible()
   }
 
   async chooseGender(gender: string) {
     switch (gender) {
+      // Male/Female/Other - в enum/obj
       case 'Male':
         await this.genderM.on()
         break

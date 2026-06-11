@@ -1,8 +1,10 @@
-import test from '@playwright/test'
+// лишний импорт
+import test, { expect } from '@playwright/test'
 import { LoginPage } from '../pages/loginPage'
 import { RegistrationPage } from '../pages/registerPage'
 import { faker } from '@faker-js/faker'
 
+// вынести
 export type TMonth = [
   'Jan.',
   'Feb.',
@@ -18,13 +20,16 @@ export type TMonth = [
   'Dec.',
 ]
 
-test.skip('User can log in with valid credentials', async ({ page }) => {
+// починить
+test('User can log in with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page)
+  // в .env
   await loginPage.login('administrator', 'administrator')
   await loginPage.checkLogin()
 })
 
-test('User can register a new account', async ({ page }) => {
+// перенести вдругой файл
+test.skip('User can register a new account', async ({ page }) => {
   const registerPage = new RegistrationPage(page)
   const userName = faker.internet.username().replace('.', '')
   const genders: ['Male', 'Female', 'Other'] = ['Male', 'Female', 'Other']
@@ -43,6 +48,7 @@ test('User can register a new account', async ({ page }) => {
     'Dec.',
   ]
 
+  //вынести подготовку данных
   await registerPage.fillRegistrationForm(
     faker.person.firstName(),
     faker.person.lastName(),
@@ -55,4 +61,3 @@ test('User can register a new account', async ({ page }) => {
     faker.helpers.arrayElement(genders)
   )
 })
-
