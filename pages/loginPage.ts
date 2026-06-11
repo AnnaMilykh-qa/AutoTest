@@ -1,9 +1,9 @@
 import { expect, Locator, Page } from '@playwright/test'
-import { BasePage } from '../pages/basePage'
+// не тот уровень импорта
+import { BasePage } from './basePage'
 
 export class LoginPage extends BasePage {
-  url = 'https://demo.opensource-socialnetwork.org/login'
- //page: Page
+  url = '/login'
   userName: Locator
   password: Locator
   loginButton: Locator
@@ -11,7 +11,7 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page)
-    //this.page = page
+    // ниже коммент
     this.userName = this.page.getByRole('textbox', { name: 'username' })
     this.password = this.page.getByRole('textbox', { name: 'password' })
     this.loginButton = this.page.locator('//input[@value="Login"]')
@@ -23,13 +23,33 @@ export class LoginPage extends BasePage {
 
     await this.userName.fill(username)
     await this.password.fill(password)
+    await this.page.pause()
     await this.loginButton.click()
-    //await this.click(this.loginButton)
   }
 
+  // к единой системе в одной page проверка снаружи в другой внутри
   async checkLogin() {
-    await expect(this.page, 'Checking URL').toHaveURL(
-      'https://demo.opensource-socialnetwork.org/home'
-    )
+    await expect(this.page, 'Checking URL').toHaveURL('/home')
   }
 }
+
+//Для accessible name = "Username" label должен быть связан с input, например так:
+//
+//   <label for="username">Username</label>
+//   <input id="username" name="username">
+//
+//   или так:
+//
+//   <label>
+//     Username
+//     <input name="username">
+//   </label>
+//
+//   На скриншоте label просто стоит рядом:
+//
+//   <label>Username</label>
+//   <input ...>
+//
+//   Если в реальном DOM нет for/id и input не вложен внутрь label, то getByRole('textbox', { name: 'username' }) может не найти поле. В таком случае надежнее:
+//
+//   this.userName = this.page.locator('input[name="username"]')

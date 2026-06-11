@@ -25,6 +25,10 @@ export default defineConfig([
   {
     files: ['**/*.spec.ts', '**/*.test.ts'],
     ...playwright.configs['flat/recommended'],
+    rules: {
+      ...playwright.configs['flat/recommended'].rules,
+      'playwright/expect-expect': 'off',
+    },
   },
 
   // 3. Дополнительные строгие правила

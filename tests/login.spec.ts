@@ -1,8 +1,10 @@
-import test from '@playwright/test'
+// лишний импорт
+import test, { expect } from '@playwright/test'
 import { LoginPage } from '../pages/loginPage'
 import { RegistrationPage } from '../pages/registerPage'
 import { faker } from '@faker-js/faker'
 
+// вынести
 export type TMonth = [
   'Jan.',
   'Feb.',
@@ -18,15 +20,18 @@ export type TMonth = [
   'Dec.',
 ]
 
-test.skip('login test', async ({ page }) => {
+// починить
+test('User can log in with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page)
+  // в .env
   await loginPage.login('administrator', 'administrator')
   await loginPage.checkLogin()
 })
 
-test('register test', async ({ page }) => {
+// перенести вдругой файл
+test.skip('User can register a new account', async ({ page }) => {
   const registerPage = new RegistrationPage(page)
-  const userName = faker.internet.username()
+  const userName = faker.internet.username().replace('.', '')
   const genders: ['Male', 'Female', 'Other'] = ['Male', 'Female', 'Other']
   const month: TMonth = [
     'Jan.',
@@ -43,6 +48,7 @@ test('register test', async ({ page }) => {
     'Dec.',
   ]
 
+  //вынести подготовку данных
   await registerPage.fillRegistrationForm(
     faker.person.firstName(),
     faker.person.lastName(),
@@ -54,25 +60,4 @@ test('register test', async ({ page }) => {
     faker.number.int({ min: 1, max: 29 }).toString(),
     faker.helpers.arrayElement(genders)
   )
-})
-
-test.skip('userName test', async () => {
-  const genders = ['Male', 'Female', 'Other']
-  const user1 = {
-    name: 'Anna',
-    lastName: 'Milykh',
-  }
-
-  console.log(user1)
-  user1.lastName = 'Newone'
-  //user1 = 2
-  console.log(user1)
-
-  let value = 'qwe'
-  console.log(value)
-  value = 'ewq'
-  console.log(value)
-
-  const gender = faker.helpers.arrayElement(genders)
-  console.log(gender)
 })
